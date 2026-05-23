@@ -313,6 +313,7 @@
     </style>
 </head>
 <body>
+    <div id="bg-canvas"></div>
 
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -427,6 +428,8 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="bg.js"></script>
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -437,5 +440,6 @@
             });
         });
     </script>
+
 </body>
 </html>
