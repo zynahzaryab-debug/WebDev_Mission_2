@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Zynah Zaryab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient-1: #0f172a;
+            --bg-gradient-2: #1e1b4b;
+            --bg-gradient-3: #312e81;
+            --bg-gradient-4: #4c1d95;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent: #a78bfa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3), var(--bg-gradient-4));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: #8b5cf6;
+            top: -150px;
+            left: -150px;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            background: #ec4899;
+            bottom: -250px;
+            right: -150px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(40px) scale(1.05); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            border-radius: 50px;
+            background: rgba(167, 139, 250, 0.2);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(167, 139, 250, 0.4);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 0 25px rgba(167, 139, 250, 0.6);
+            transform: scale(1.05);
+        }
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.6rem;
+            max-width: 650px;
+            margin: 0 auto 40px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 120px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            font-size: 1.15rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card h3 {
+            color: var(--text-main);
+            font-size: 1.6rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .tag {
+            background: rgba(167, 139, 250, 0.15);
+            color: #d8b4fe;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .skill-item {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+
+        .skill-item h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 80px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--text-main);
+            transform: translateY(-4px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content p { font-size: 1.3rem; }
+            .nav-links { display: none; }
+            section { padding: 80px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">ZYNAH.</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="container hero-content">
+            <div class="glass-card">
+                <h1>Hi, I'm Zynah Zaryab<br><span style="color: var(--accent)">Frontend Developer</span> & UI/UX Engineer</h1>
+                <p>Crafting modern, immersive, and elegantly responsive web experiences using the power of pure code and glassmorphism.</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="glass-card about-content">
+                <div>
+                    <p>Hello! I'm Zynah, a passionate frontend developer and UI/UX engineer dedicated to building the future of the web. I specialize in translating complex ideas into highly intuitive, beautiful, and fluid digital interfaces.</p>
+                    <p>My core philosophy is that great design is invisible — it just works. I focus on bridging the gap between compelling aesthetics and robust engineering, ensuring every project I touch is both visually stunning and technically sound.</p>
+                    <p>Beyond coding, I'm deeply interested in emerging web technologies, cybernetics, and exploring innovative ways to create engaging, accessible, and inclusive user experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="glass-card project-card">
+                    <div>
+                        <h3>Neon Dashboard</h3>
+                        <p>A futuristic analytics dashboard featuring real-time data visualization, frosted glass panels, and seamless transition animations.</p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">Vanilla JS</span>
+                    </div>
+                </div>
+                <div class="glass-card project-card">
+                    <div>
+                        <h3>Aura E-Commerce</h3>
+                        <p>A high-end, responsive online storefront prioritizing minimalist design, fluid layouts, and advanced CSS grid architectures.</p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Web Design</span>
+                        <span class="tag">CSS Grid</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </div>
+                <div class="glass-card project-card">
+                    <div>
+                        <h3>Quantum Portfolio</h3>
+                        <p>A personal portfolio template designed with cutting-edge CSS backdrop filters to create an immersive, deep-layered visual experience.</p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Glassmorphism</span>
+                        <span class="tag">Animations</span>
+                        <span class="tag">Responsive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="glass-card skill-item"><h3>HTML5 Semantic</h3></div>
+                <div class="glass-card skill-item"><h3>Advanced CSS3</h3></div>
+                <div class="glass-card skill-item"><h3>Modern JavaScript</h3></div>
+                <div class="glass-card skill-item"><h3>UI / UX Design</h3></div>
+                <div class="glass-card skill-item"><h3>Responsive Grid</h3></div>
+                <div class="glass-card skill-item"><h3>Git Version Control</h3></div>
+                <div class="glass-card skill-item"><h3>Glassmorphism</h3></div>
+                <div class="glass-card skill-item"><h3>Web Animations</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Dribbble</a>
+            </div>
+            <p>&copy; 2026 Zynah Zaryab | Engineered with precision and pure CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
